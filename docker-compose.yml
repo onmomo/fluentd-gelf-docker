@@ -1,0 +1,15 @@
+graylog2:
+  container_name: graylog2
+  image: graylog2/allinone
+  ports:
+    - 9000:9000
+    - 12201:12201
+
+fluentd-gelf:
+  container_name: fluentd-gelf
+  build: .
+  links:
+    - graylog2
+  ports:
+    - 24224:24224
+
