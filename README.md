@@ -1,4 +1,6 @@
-# fluentd to graylog2 (gelf) forwarder multi container environment
+# fluentd to graylog2 (gelf) forwarder
+
+This will setup a multi container environment containing graylog2 and a custom fluentd GELF forwarder.
 
 ## Using with docker-compose (recommended)
 
@@ -30,4 +32,6 @@ Build and link it to graylog2
 ### How to use
 
 Now you're able to push any fluentd logs to HOST:24224. The fluentd messages will be forwarded to graylog2 as long a tag in format gelf.app.XYZ is specified.
-Make sure, that you define a `GELF UPD` input source withing graylog2: http://host:9000/system/inputs
+Make sure, that you define a `GELF UPD` input source listening to port: `12201` (default) withing graylog2: `http://host:9000/system/inputs`
+
+
