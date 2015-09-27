@@ -15,7 +15,9 @@ Run graylog2 all-in-one container env.
 
 `docker pull graylog2/allinone`
 
-`docker run -t -p 9000:9000 -p 12201:12201 -e GRAYLOG_SERVER_SECRET=secret --name graylog2 -e GRAYLOG_NODE_ID=graylog2 graylog2/allinone`
+`docker run -t -p 9000:9000 -p 12201:12201 --name graylog2 -e GRAYLOG_NODE_ID=graylog2 graylog2/allinone`
+
+Now, you should be able to login to the graylog2 web interface `http://host:9000/` (admin:admin)
 
 ### Setup fluentd to graylog container
 
@@ -24,3 +26,8 @@ Build and link it to graylog2
 `docker build -t fluent-gelf .`
 
 `docker run -p 24224:24224 --link graylog2:graylog2 -it --name fluent-gelf fluent-gelf`
+
+### How to use
+
+Now you're able to push any fluentd logs to HOST:24224. The fluentd messages will be forwarded to graylog2 as long a tag in format gelf.app.XYZ is specified.
+Make sure, that you define a `GELF UPD` input source withing graylog2: http://host:9000/system/inputs
