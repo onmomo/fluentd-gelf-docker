@@ -1,6 +1,8 @@
 # fluentd to graylog2 (gelf) forwarder
 
 This will setup a multi container environment containing graylog2 and a fluentd GELF forwarder.
+It uses the official graylog2 and fluentd containers as base images.
+The distributed fluentd gelf plugin (plugins/out_gelf.rb) was developed by @emsearcy: https://github.com/emsearcy/fluent-plugin-gelf`.
 
 ## Using with docker-compose (recommended)
 
