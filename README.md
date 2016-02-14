@@ -26,6 +26,8 @@ graylog2:
     - {yourAbsoluteOrRelativPath}:/var/log/graylog
 ```
 
+Make sure that you use docker-compose version 1.5.0 for overriding the docker-compose.yml configuration.
+
 ## Manual setup steps
 
 ### Setup graylog2 container
