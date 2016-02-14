@@ -12,6 +12,18 @@ Then it will build and run a fluentd UPD forwarder to the graylog2 container
 
 `docker-compose up -d`
 
+#### Data persistence
+
+By default running graylog with `docker-compose up -d` will persist data relatively in `./graylog2/data` as configured in the `docker-compose.yml` file.
+You can simply modify that by placing a `docker-compose.override.yml` file with your specific configuration in the same directory. 
+
+`graylog2:
+  environment:
+    GRAYLOG_NODE_ID: dev.local
+  volumes:
+    - {yourAbsoluteOrRelativPath}:/var/opt/greylog/data
+    - {yourAbsoluteOrRelativPath}:/var/log/graylog`
+`
 ## Manual setup steps
 
 ### Setup graylog2 container
@@ -23,6 +35,12 @@ Run graylog2 all-in-one container env.
 `docker run -t -p 9000:9000 -p 12201:12201 --name graylog2 -e GRAYLOG_NODE_ID=graylog2 graylog2/allinone`
 
 Now, you should be able to login to the graylog2 web interface `http://host:9000/` (admin:admin)
+
+#### Data persistence
+
+To persist graylog2 data outside of your container you need to mount the data volumne.
+
+`docker run -t -p 9000:9000 -p 12201:12201 --name graylog2 -e GRAYLOG_NODE_ID=graylog2 -v {yourAbsolutePath}:/var/opt/graylog/data -v {yourAbsolutePath}:/var/log/graylog graylog2/allinone`
 
 ### Setup fluentd to graylog container
 

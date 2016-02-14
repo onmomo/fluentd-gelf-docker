@@ -4,6 +4,9 @@ graylog2:
   ports:
     - 9000:9000
     - 12201:12201
+  volumes:
+    - ./graylog2/data:/var/opt/greylog/data
+    - ./graylog2/log:/var/log/graylog`
 
 fluentd-gelf:
   container_name: fluentd-gelf
