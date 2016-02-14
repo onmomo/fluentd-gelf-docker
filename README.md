@@ -17,13 +17,15 @@ Then it will build and run a fluentd UPD forwarder to the graylog2 container
 By default running graylog with `docker-compose up -d` will persist data relatively in `./graylog2/data` as configured in the `docker-compose.yml` file.
 You can simply modify that by placing a `docker-compose.override.yml` file with your specific configuration in the same directory. 
 
-`graylog2:
+`
+graylog2:
   environment:
     GRAYLOG_NODE_ID: dev.local
   volumes:
     - {yourAbsoluteOrRelativPath}:/var/opt/greylog/data
-    - {yourAbsoluteOrRelativPath}:/var/log/graylog`
+    - {yourAbsoluteOrRelativPath}:/var/log/graylog
 `
+
 ## Manual setup steps
 
 ### Setup graylog2 container
