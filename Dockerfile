@@ -2,11 +2,11 @@ FROM fluent/fluentd:latest
 
 MAINTAINER Christian Moser <onmomo>
 
-USER ubuntu
+USER fluent
 
-WORKDIR /home/ubuntu
+WORKDIR /home/fluent
 
-ENV PATH /home/ubuntu/ruby/bin:$PATH
+ENV PATH /home/fluent/.gem/ruby/2.2.0/bin:$PATH
 
 RUN gem install gelf
 
